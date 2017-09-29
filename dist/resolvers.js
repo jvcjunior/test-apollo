@@ -8,7 +8,7 @@ var _mongoose = require('mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _user = require('../model/user');
+var _user = require('./model/user');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17,19 +17,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 var resolveFunctions = {
   Query: {
-    places: function (_places) {
-      function places() {
-        return _places.apply(this, arguments);
-      }
-
-      places.toString = function () {
-        return _places.toString();
-      };
-
-      return places;
-    }(function () {
-      return places;
-    })
+    users: function users() {
+      return [];
+    }
   },
   Mutation: {
     RegisterEmail: function () {
@@ -41,18 +31,19 @@ var resolveFunctions = {
               case 0:
                 // const res = await Posts.insert(args)
                 // return prepare(await Posts.findOne({_id: res.insertedIds[1]}))
+                console.log('User', _user.User);
                 console.log('*************************');
                 console.log('ARGS MUUTAION REGISTER EMAIL', args);
                 console.log('*************************');
                 email = args.email;
-                _context.next = 6;
+                _context.next = 7;
                 return _user.User.findOne({ email: email.toLowerCase() });
 
-              case 6:
+              case 7:
                 user = _context.sent;
 
                 if (!user) {
-                  _context.next = 9;
+                  _context.next = 10;
                   break;
                 }
 
@@ -61,23 +52,23 @@ var resolveFunctions = {
                   error: 'EMAIL_ALREADY_IN_USE'
                 });
 
-              case 9:
+              case 10:
 
                 user = new _user.User({
                   name: name,
                   email: email,
                   password: password
                 });
-                _context.next = 12;
+                _context.next = 13;
                 return user.save();
 
-              case 12:
+              case 13:
                 return _context.abrupt('return', {
                   token: generateToken(user),
                   error: null
                 });
 
-              case 13:
+              case 14:
               case 'end':
                 return _context.stop();
             }
@@ -85,11 +76,9 @@ var resolveFunctions = {
         }, _callee, undefined);
       }));
 
-      function RegisterEmail(_x, _x2, _x3, _x4) {
+      return function RegisterEmail(_x, _x2, _x3, _x4) {
         return _ref.apply(this, arguments);
-      }
-
-      return RegisterEmail;
+      };
     }()
   }
 };

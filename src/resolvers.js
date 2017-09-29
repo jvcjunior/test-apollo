@@ -13,6 +13,7 @@ const resolveFunctions = {
     RegisterEmail: async (root, args, context, info) => {
           // const res = await Posts.insert(args)
           // return prepare(await Posts.findOne({_id: res.insertedIds[1]}))
+          console.log('User', User);
           console.log('*************************');
           console.log('ARGS MUUTAION REGISTER EMAIL', args);
           console.log('*************************');
