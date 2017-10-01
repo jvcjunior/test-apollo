@@ -25,5 +25,5 @@ const schema = `
 
 export default makeExecutableSchema({
   typeDefs: schema,
-  resolvers
+  resolvers,
 });
